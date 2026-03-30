@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws InterruptedException {
         List<Thread> threads = new ArrayList<>();
-        System.out.println("====Inicializtion Main====");
+        System.out.println("====Inicializtion Treads====");
         for(int i=0;i<10;i++)
         {
             Thread t_tmp = null;
@@ -19,21 +19,35 @@ public class Main {
             }
             threads.add(t_tmp);
         }
-
         threads.forEach(Thread::start);
 
+        //Thread initialazion end;
+
         Scanner sc = new Scanner(System.in);
-        int flag=0;
-        while(flag!=0)
-        {
-            System.out.println("Type anything to end threads:");
-            flag=sc.nextInt();
+        enum commands {start,stop,end}
+        String command;
+        int threadNumber=0;
+        while(true) {
+            if ((command = sc.next()).equals("end"))
+            {
+                break;
+            }
+            threadNumber= sc.nextInt();
+
+
+            switch (command) {
+                case "start":
+                    threads.get(threadNumber).start();
+
+                    break;
+                case "stop":
+                    threads.get(threadNumber).interrupt();
+                    break;
+            }
+
         }
+
         threads.forEach(Thread::interrupt);
-
-
-
-
 
     }
 

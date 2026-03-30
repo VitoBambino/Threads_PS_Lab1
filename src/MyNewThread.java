@@ -1,7 +1,7 @@
 public class MyNewThread implements Runnable {
 
     private final int threadNumber;
-    private boolean suspended = false;
+    private boolean suspended = true;
 
     public MyNewThread(int threadNumber) {
         this.threadNumber = threadNumber;
