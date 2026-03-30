@@ -11,7 +11,7 @@ public class Main {
             Thread t_tmp = null;
             try
             {
-               t_tmp=new Thread(new MyNewThread());
+               t_tmp=new Thread(new MyNewThread(i));
             }
             catch (Exception e) {
                 System.out.println(e);
